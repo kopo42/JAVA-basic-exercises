@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+
+public class Exception_sub {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList <String> list = new ArrayList();
+		String errdata = "Exceptions: 1java.sql.BatchUpdateException: Incorrect integer value: '에러123' for column 'h_price' at row 1\r\n"
+				+ "	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n"
+				+ "	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)\r\n"
+				+ "	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n"
+				+ "	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)\r\n"
+				+ "	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.util.Util.handleNewInstance(Util.java:192)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.util.Util.getInstance(Util.java:167)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.util.Util.getInstance(Util.java:174)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.exceptions.SQLError.createBatchUpdateException(SQLError.java:224)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:853)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchInternal(ClientPreparedStatement.java:435)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.StatementImpl.executeBatch(StatementImpl.java:794)\r\n"
+				+ "	at StockMain.main(StockMain.java:80)\r\n"
+				+ "Caused by: java.sql.SQLException: Incorrect integer value: '에러123' for column 'h_price' at row 1\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)\r\n"
+				+ "	at mysql.connector.java@8.0.24/com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:832)\r\n"
+				+ "	... 3 more";
+		errdata = errdata.substring(0, 200);
+		//list = getErr(errdata);
+		
+		String TAG1 = "Exception:"; //공백존재
+		String TAG2 = "at";
+		
+		errdata = errdata.substring(errdata.indexOf(TAG1));
+		errdata = errdata.substring(0, (errdata.indexOf(TAG2)+8));
+		System.out.println(errdata);
+		
+		for(String value: list) {
+			System.out.println(value);
+		}
+	}
+	public static ArrayList<String> getErr(String errdata) {
+		ArrayList <String> list = new ArrayList();
+		String TAG = "Exceptions:"; //공백존재
+		String temp = "";
+		String listSTR = "";
+		String str = "";
+		while(true) {
+			try {
+				errdata = errdata.substring(0, 100);
+				errdata = errdata.substring(errdata.indexOf(TAG));
+				//errdata = errdata.substring(0, errdata.indexOf("at"));
+				
+				list.add(errdata);
+				
+				/*
+				 * if (temp.charAt(0) != '\"') { temp = temp.substring(0, temp.indexOf(" ") -
+				 * 1); //list 위로 옮기기, 계속 추가 list.add(temp); } errdata =
+				 * errdata.substring(errdata.indexOf(temp) + temp.length());
+				 */
+			}catch(Exception e) {
+				break;
+			}
+		}
+		//System.out.println(list.get(1));
+		return list;
+	}
+}

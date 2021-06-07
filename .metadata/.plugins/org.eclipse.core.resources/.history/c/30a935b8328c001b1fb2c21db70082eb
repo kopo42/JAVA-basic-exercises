@@ -1,0 +1,21 @@
+package java004;
+import java.util.Scanner;
+public class Factorial {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+		int factn = 0;
+		System.out.println(factn(n));
+	}
+		
+	public static int factn (int N) {
+		int i = 0;
+			if ( N == 1 ) {
+				return 1;
+			} else {
+				System.out.println(factn(--N));
+				return N * factn(--N);
+			}
+	}
+}

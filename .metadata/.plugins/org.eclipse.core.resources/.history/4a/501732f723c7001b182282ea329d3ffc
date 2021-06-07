@@ -1,0 +1,30 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class StockTable {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.cj.jdbc.Driver"); //mysql 사용을 위한 객체
+		Connection k42_connect = DriverManager.getConnection("jdbc:mysql://192.168.23.72:33060/kopo42",
+				"root", "kopo42"); //mysql 링크, 사용자, 비밀번호
+		//사용자 정보 변경이 잦을 경우, 정보만 저장하는 클래스 따로 생성
+		
+		Statement k42_statemt = k42_connect.createStatement(); //statement = 쿼리 전송 인터페이스
+		
+		//k42_statemt.execute("drop table if exists dailystockprice;"); //수정시 삭제하고 다시 생성
+		
+		k42_statemt.execute("create table dailystockprice ("
+				+ "code varchar(30),"
+				+ "pdate date, p_price int, o_price int, h_price int, i_price int,"
+				+ "quty bigint, amt bigint, primary key(code, pdate));");
+		
+		//primary key(code, pdate)
+		//리눅스 명령어와 동일하게 테이블 생성
+		
+		k42_statemt.close();
+		k42_connect.close();
+	}
+
+}

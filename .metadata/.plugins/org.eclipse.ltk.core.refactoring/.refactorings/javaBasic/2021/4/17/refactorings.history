@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;test3&apos; to &apos;JAVAadvanced/src&apos;&#x0D;&#x0A;- Original project: &apos;javaBasic&apos;&#x0D;&#x0A;- Destination element: &apos;JAVAadvanced/src&apos;&#x0D;&#x0A;- Original element: &apos;javaBasic/src/test3&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=JAVAadvanced/src" element1="/src&lt;test3" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1619048297967" version="1.0"/>
+</session>
